@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+.container {
+    height: 100vh;
+    width: 100%;
+    display: inline-grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(10, 1fr);
+    background-color: lightblue; 
+}
+
+.room {
+    border: 1px solid;
+    font-size: 1rem;
+    text-align: center;
+}

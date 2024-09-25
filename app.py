@@ -25,15 +25,31 @@ item_prices = {
     "Calendar": 12.00
 }
 
+quarter_sales = {
+    "First Quarter": methods.first_quarter_sales_total(sales_data, item_prices),
+    "Second Quarter": methods.second_quarter_sales_total(sales_data, item_prices),
+    "Third Quarter": methods.third_quarter_sales_total(sales_data, item_prices),
+    "Fourth Quarter": methods.fourth_quarter_sales_total(sales_data, item_prices)
+}
+
 
 
 @app.get('/')
 def home():
-    print(methods.average_sales_year(sales_data))
-    print(methods.average_sales_month(sales_data))
-    print(methods.total_sales(sales_data))
-    print(methods.compute_items_sold_per_month(sales_data))
+    print(methods.compute_total_sales_per_month(sales_data, item_prices))
+    print(methods.total_revenue_sales(sales_data))
     print(methods.compute_total_sales_per_item(sales_data, item_prices))
+    print(methods.compute_items_sold_per_month(sales_data))
+    print(methods.first_quarter_sales(sales_data, item_prices))
+    print(methods.second_quarter_sales(sales_data, item_prices))
+    print(methods.third_quarter_sales(sales_data, item_prices))
+    print(methods.fourth_quarter_sales(sales_data, item_prices))
+    # print(methods.first_quarter_sales_total(sales_data, item_prices))
+    # print(methods.second_quarter_sales_total(sales_data, item_prices))
+    # print(methods.third_quarter_sales_total(sales_data, item_prices))
+    # print(methods.fourth_quarter_sales_total(sales_data, item_prices))
+
+    print(quarter_sales)
     return render_template('index.html')
 
 
