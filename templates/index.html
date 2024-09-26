@@ -5,20 +5,62 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ABC Corporation | Home</title>
     <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 <body>
 
     <div class="container">
-        <div class="room" id="room1">Sales Dashboard</div>
-        <div class="room" id="room2">Total Revenue</div>
-        <div class="room" id="room3">Items Sold</div>
-        <div class="room" id="room4">Monthly Revenue</div>
-        <div class="room" id="room5">Monthly Graphs</div>
-        <div class="room" id="room6">Yearly Sales</div>
-        <div class="room" id="room7">Quarterly Profit</div>
-        <div class="room" id="room8">*Draw graphical on the yearly sales models</div>
-        <div class="room" id="room9">*Quarterly Graphical Model</div>
+        <div class="room" id="room1">
+            <h3>Sales Dashboard</h3>
+
+        </div>
+        <div class="room" id="room2">
+            <h4>Total Overall Profit</h4>
+            <div class="profit" id="profit">${{ total_overall_revenue }}</div>
+
+        </div>
+        <div class="room" id="room3">
+            <h4>Items Sold</h4>
+            <div class="items-sold" id="items-sold">{{ total_items_sold }}</div>
+        </div>
+        <div class="room" id="room4">
+            <h4>Average Monthly Revenue</h4>
+            <div class="average-monthly-revenue" id="average-monthly-revenue">${{ average_monthly_revenue }}</div>
+        </div>
+        <div class="room" id="room5">
+            <form action="/other-graphs", method="get">
+
+                <button class="monthly-btn">View Other Graphs</button>
+
+            </form>
+        </div>
+
+        <div class="room yearly-graph-label" id="room6">Yearly Sales</div>
+
+        <div class="room quarterly-graph-label" id="room7">Quarterly Profit</div>
+
+        <div class="room" id="room8">
+            <div class="yearly-revenue">
+                <canvas id="revenueChart"></canvas>
+            </div>
+            <div id="yearly-revenue"
+                data-months='{{ months | tojson }}' 
+                data-total-revenue='{{ total_revenue | tojson }}'>
+            </div>
+        </div>
+        
+        <div class="room" id="room9">
+            <div class="quarterly-revenue">
+                <canvas id="quarterlySalesChart"></canvas>
+            </div>
+            <div id="quarterly-revenue"
+                data-pie-chart='{{ quarterly_sales | tojson }}'>
+            </div>
+        </div>
     </div>
+
+    <script src="static/chart.js"></script>
     
     
 </body>

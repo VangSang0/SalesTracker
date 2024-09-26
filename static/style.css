@@ -11,57 +11,209 @@ body{
     display: inline-grid;
     grid-template-rows: repeat(12, 1fr);
     grid-template-columns: repeat(12, 1fr);
-    background-color: #2E8B57; 
+    /* background: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147)); */
+    background: #005035;
 }
 
 .room {
-    border: 1px solid;
-    font-size: 1rem;
+    /* font-size: 1rem; */
     text-align: center;
 }
 
 #room1{
     grid-row: 1;
-    grid-column: 2 / 11;
+    grid-column: 2 / 12;
+    margin-top: 1rem;
+    height: 70%;
+    width: 30%;
+    font-size: 2rem;
+    justify-self: center;
+    align-self: center;
+    background-color: #A49665;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+h3{
+    margin-top: 1rem;
+    font-size: 2rem;
+
+}
+
+
+h4{
+    font-size: 1.5rem;
+    text-decoration: underline;
+}
+
+.profit, .items-sold, .average-monthly-revenue{
+    font-size: 3rem;
 }
 
 #room2{
     grid-row: 2/4;
     grid-column: 1/4;
+    color: #F5F5DC;
 }
 
 #room3{
     grid-row: 2/4;
     grid-column: 4/7;
+    color: #F5F5DC;
 }
 
 #room4{
     grid-row: 2/4;
     grid-column: 7/10;
+    color: #F5F5DC;
 }
 
 #room5{
     grid-row: 2/4;
     grid-column: 10/13;
+    width: 100%;
+    height: auto;
+    justify-self: center;
+    align-self: center;
+}
+.monthly-btn{
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #5adbb5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.monthly-btn:hover{
+    cursor: pointer;
+    background-color: #20b386;
 }
 
 #room6{
     grid-row: 4;
     grid-column: 1/8;
+    width: 30%;
+    height: auto;
+    justify-self: center;
+    align-self: flex-end;
+    color: #F5F5DC;
+}
+
+.yearly-graph-label, .quarterly-graph-label{
+    font-size: 3rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 #room7{
     grid-row: 4;
     grid-column: 8/13;
+    width: 30%;
+    height: auto;
+    justify-self: center;
+    align-self: flex-end;
+    color: #F5F5DC;
 }
+
 
 #room8{
     grid-row: 5/12;
     grid-column: 1/8;
 }
 
+.yearly-revenue{
+    margin-left: 4rem;
+    margin-top: 3rem;
+    height: 90%;
+    width: 90%;
+    justify-self: center;
+    background-color: lightgray;
+    border-radius: 10px 20px 30px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: #A49665 4px solid;
+}
+
 #room9{
     grid-row: 5/12;
     grid-column: 8/13;
 }
+
+.quarterly-revenue{
+    margin: 3rem 0 0 2rem;
+    height: 90%;
+    width: 90%;
+    justify-self: center;
+    align-self: center;
+    background-color: lightgray;
+    border-radius: 10px 20px 30px 40px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border:#A49665 4px solid;
+}
+
+
+.graph-container{
+    height: 100vh;
+    width: 100%;
+    display: inline-grid;
+    grid-template-rows: repeat(12, 1fr);
+    grid-template-columns: repeat(12, 1fr);
+    background: #005035;
+}
+
+.graph{
+    text-align: center;
+    border: 1px solid;
+
+}
+
+#home-link{
+    grid-row: 1;
+    grid-column: 1;
+    margin: 1rem;
+    font-size: 2rem;
+    padding: 1rem;
+    border-radius: 10px;
+    background-color: #5adbb5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#home-link:hover{
+    cursor: pointer;
+    background-color: #20b386;
+}
+
+#home-link a{
+    text-decoration: none;
+    color: #F5F5DC;
+}
+
+#graph1{
+    grid-row: 1/7;
+    grid-column: 2/7;
+}
+
+.items-sold-month, .revenue-items, .items-sold-per-month{
+    width: 90%;
+    height: auto;
+    border-radius: 15px;
+    margin: 1rem 0 0 2rem;
+    background-color: lightgray; ;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: #A49665 4px solid;
+}
+
+#graph2{
+    grid-row: 1/7;
+    grid-column: 7/12;
+}
+
+#graph3{
+    grid-row: 7/13;
+    grid-column: 4/10;
+}
+
+.labeling{
+    margin:0;
+}
+
+
 

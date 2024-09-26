@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Other Graphs</title>
+    <link rel="stylesheet" href="static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
+</head>
+<body>
+    <div class="graph-container">
+        <div class="graph" id="home-link">
+            <a class="home-btn" href="/">Home</a>
+        </div>
+        <div class="graph" id="graph1">
+            <div class="items-sold-per-month">
+                <canvas id="itemsSoldBarChart"></canvas>
+            </div>
+            <div id="items-sold-bar"
+                items-sold-per-month='{{ number_of_items_sold | tojson }}'>
+            </div>
+            <div class="items-sold-bar-label">
+                <h4 class="labeling">Number of Items Sold Per Month</h4>
+            </div>
+        </div>
+        <div class="graph" id="graph2">
+            <div class="revenue-items">
+                <canvas id="revenuePerItem"></canvas>
+            </div>
+            <div id="revenue-per-item" 
+                items-revenue-per-month='{{ revenue_per_item | tojson }}'>
+            </div>
+            <div class="revenue-per-item-label">
+                <h4 class="labeling">Profit Made Per Item</h4>
+            </div>
+        </div>
+        <div class="graph" id="graph3">
+            <div class="items-sold-month">
+                <canvas id="itemsSoldChart"></canvas>
+            </div>
+            <div id="items-sold"
+                items-months='{{ months | tojson }}' 
+                data-items-sold='{{ total_items_sold | tojson }}'>
+            </div>
+            <div class="items-sold-label">
+                <h4 class="labeling">Number of Items Sold Per Month</h4>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="static/chart.js"></script>
+</body>
+</html>

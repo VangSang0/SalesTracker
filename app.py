@@ -25,31 +25,44 @@ item_prices = {
     "Calendar": 12.00
 }
 
-quarter_sales = {
-    "First Quarter": methods.first_quarter_sales_total(sales_data, item_prices),
-    "Second Quarter": methods.second_quarter_sales_total(sales_data, item_prices),
-    "Third Quarter": methods.third_quarter_sales_total(sales_data, item_prices),
-    "Fourth Quarter": methods.fourth_quarter_sales_total(sales_data, item_prices)
-}
 
 
 
 @app.get('/')
 def home():
-    print(methods.compute_total_sales_per_month(sales_data, item_prices))
-    print(methods.total_revenue_sales(sales_data))
-    print(methods.compute_total_sales_per_item(sales_data, item_prices))
-    print(methods.compute_items_sold_per_month(sales_data))
-    print(methods.first_quarter_sales(sales_data, item_prices))
-    print(methods.second_quarter_sales(sales_data, item_prices))
-    print(methods.third_quarter_sales(sales_data, item_prices))
-    print(methods.fourth_quarter_sales(sales_data, item_prices))
-    # print(methods.first_quarter_sales_total(sales_data, item_prices))
-    # print(methods.second_quarter_sales_total(sales_data, item_prices))
-    # print(methods.third_quarter_sales_total(sales_data, item_prices))
-    # print(methods.fourth_quarter_sales_total(sales_data, item_prices))
+    yearly_revenue = methods.compute_total_sales_per_month(sales_data, item_prices)
+    months = yearly_revenue['Month'].tolist()
+    total_revenue = [round(revenue, 2) for revenue in yearly_revenue['Total Revenue per Month']]
 
-    print(quarter_sales)
-    return render_template('index.html')
+    # Quarterly sales
+    quarterly_sales = {
+        'First Quarter': methods.first_quarter_sales_total(sales_data, item_prices),
+        'Second Quarter': methods.second_quarter_sales_total(sales_data, item_prices),
+        'Third Quarter': methods.third_quarter_sales_total(sales_data, item_prices),
+        'Fourth Quarter': methods.fourth_quarter_sales_total(sales_data, item_prices)
+    }
+    quarterly_sales_values = list(quarterly_sales.values())
 
+
+    total_overall_revenue = methods.total_overall_revenue(sales_data, item_prices)
+    average_monthly_revenue = methods.average_sales_per_month(sales_data, item_prices)
+    total_items_sold = methods.total_items_sold(sales_data)
+    
+
+    return render_template('index.html', months=months, total_revenue=total_revenue, quarterly_sales=quarterly_sales_values, total_overall_revenue=total_overall_revenue, average_monthly_revenue=average_monthly_revenue, total_items_sold=total_items_sold)
+
+
+@app.get('/other-graphs')
+def other_graphs():
+    yearly_items_sold = methods.total_items_sold_per_month(sales_data)
+    months = yearly_items_sold['Month'].tolist()
+    total_items_sold = yearly_items_sold['Total Number of Items Sold'].tolist()
+
+    revenue_per_item = methods.revenue_per_item(sales_data, item_prices)
+    revenue_per_item = revenue_per_item.to_dict(orient='list')
+
+    number_of_items_sold = methods.items_sold_per_month(sales_data)
+    number_of_items_sold = number_of_items_sold.to_dict(orient='list')
+
+    return render_template('other-graphs.html', months=months, total_items_sold=total_items_sold, revenue_per_item=revenue_per_item, number_of_items_sold=number_of_items_sold)
 

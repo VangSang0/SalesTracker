@@ -8,21 +8,38 @@ def compute_total_sales_per_month(sales_data, item_prices):
     total_revenue_df = pd.DataFrame({'Month': months, 'Total Revenue per Month': total_revenue})
     return total_revenue_df
 
-def total_revenue_sales(data):
+def average_sales_per_month(sales_data, item_prices):
+    sales_data_cleaned = sales_data.drop('Month', axis=1)
+    sales_data_cleaned = sales_data_cleaned.multiply(pd.Series(item_prices), axis=1)
+    average_sales = "{:.2f}".format(sales_data_cleaned.mean(axis=1).mean())
+    return average_sales
+
+def total_overall_revenue(data, item_prices):
+    data_cleaned = data.drop('Month', axis=1)
+    revenue = data_cleaned.multiply(pd.Series(item_prices), axis=1)
+    total_revenue = revenue.sum().sum()
+    return total_revenue
+
+def total_items_sold(data):
+    data_cleaned = data.drop('Month', axis=1)
+    total_items_sold = data_cleaned.sum().sum()
+    return total_items_sold
+
+def total_items_sold_per_month(data):
     months = data['Month']
     data_df_cleaned = data.drop('Month', axis=1)
     data_total_sales_month = data_df_cleaned.sum(axis=1).astype(int)
     data_total_sales_month_df = pd.DataFrame({'Month': months, 'Total Number of Items Sold': data_total_sales_month})
     return data_total_sales_month_df
 
-def compute_total_sales_per_item(sales_data, item_prices):
+def revenue_per_item(sales_data, item_prices):
     month = sales_data['Month']
     sales_data_cleaned = sales_data.drop('Month', axis=1)
     revenue = sales_data_cleaned.multiply(pd.Series(item_prices), axis=1)
     revenue_with_month = pd.concat([month, revenue], axis=1)
     return revenue_with_month
 
-def compute_items_sold_per_month(sales_data):
+def items_sold_per_month(sales_data):
     month = sales_data['Month']
     sales_data_cleaned = sales_data.drop('Month', axis=1)
     sales_data_cleaned_with_month = pd.concat([month, sales_data_cleaned], axis=1)
