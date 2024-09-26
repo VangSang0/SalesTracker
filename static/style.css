@@ -161,7 +161,7 @@ h4{
 
 .graph{
     text-align: center;
-    border: 1px solid;
+    /* border: 1px solid; */
 
 }
 
@@ -207,12 +207,13 @@ h4{
 }
 
 #graph3{
-    grid-row: 7/13;
+    grid-row: 7/12;
     grid-column: 4/10;
 }
 
 .labeling{
-    margin:0;
+    margin:1rem;
+    color:#F5F5DC;
 }
 
 
